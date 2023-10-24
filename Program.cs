@@ -186,9 +186,9 @@ namespace Bank_of_Blorb__BoB_
         public static void BillPayment()
         {
             string yOrN;
-            double billAmountPaid, blorbcoinDepository = 20.12;
+            double billAmountPaid;
             Console.WriteLine("Welcome, to Bill Payment! You have ONE outstanding bill from BLORBCOIN DEPOSITORY");
-            Console.WriteLine("The bill is 20.12 do you wish to pay for it now? (Y/N)");
+            Console.WriteLine("Do you wish to pay this bill? (Y/N)");
             yOrN = Console.ReadLine().ToLower();
             if (yOrN == "y")
             {
@@ -197,20 +197,8 @@ namespace Bank_of_Blorb__BoB_
 
                 Console.WriteLine("How much do you want to pay? (Note: what you input is FINAL. INVALID RESPONSE WILL RESULT IN EXITING ATM)");
                 billAmountPaid = Convert.ToDouble(Console.ReadLine());
-                if (billAmountPaid < blorbcoinDepository)
-                {
-                    Thread.Sleep(700);
-                    Console.WriteLine($"Thanks! for paying {billAmountPaid}");
-                    Console.WriteLine("Subtracting 0.75 from account");
-                    money = money - 0.75;
-                    Console.WriteLine($"You now have {money}");
-                    Console.WriteLine("Click enter to exit");
-                    blorbcoinDepository = billAmountPaid - blorbcoinDepository;
-                    money = billAmountPaid - money;
-                    Console.ReadLine();
-                    Exit();
-                }
-                else if (billAmountPaid > blorbcoinDepository) 
+               
+                  if (billAmountPaid >= money + 0.75) 
                 {
                     Thread.Sleep(700);
                     Console.WriteLine("INVALID RESPONSE");
@@ -226,7 +214,7 @@ namespace Bank_of_Blorb__BoB_
 
                 Thread.Sleep(500);
                 Console.WriteLine($"You paid {billAmountPaid} of Blorbian dollars");
-                Console.WriteLine($"You still must pay {blorbcoinDepository} amount of money");
+                Console.WriteLine($"You now have {money}");
                 Console.WriteLine("Click enter to exit");
                 Console.ReadLine();
                 Exit();
